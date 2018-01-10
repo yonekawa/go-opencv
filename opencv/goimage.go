@@ -73,7 +73,7 @@ func (img *IplImage) ToImage() image.Image {
 	c := color.NRGBA{R: uint8(0), G: uint8(0), B: uint8(0), A: uint8(255)}
 	// Iteratively assign imageData's color to Go's image
 	for y := 0; y < height; y++ {
-		for x := 0; x < step; x = x + channels {
+		for x := 0; (x + channels) < step; x = x + channels {
 			c.B = uint8(data[y*step+x])
 			c.G = uint8(data[y*step+x+1])
 			c.R = uint8(data[y*step+x+2])
